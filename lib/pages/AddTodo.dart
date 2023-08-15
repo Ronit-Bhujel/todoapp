@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todoapp/pages/HomePage.dart';
@@ -161,7 +162,8 @@ class _AddTodoPageState extends State<AddTodoPage> {
           "task": type,
           "category": category,
           "description": _descriptionController.text,
-          "date": "${now.hour} : ${now.minute}"
+          "date": "${now.hour} : ${now.minute}",
+          "user_id": FirebaseAuth.instance.currentUser?.uid
         });
         Navigator.pop(context);
       },
